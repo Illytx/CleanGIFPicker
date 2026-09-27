@@ -27,12 +27,15 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 ## 🚀 Installation
 
 1. Make sure you have [BetterDiscord](https://betterdiscord.app/) installed.
-2. Download the [`CleanGIFPicker.plugin.js`](https://raw.githubusercontent.com/Illytx/CleanGIFPicker/main/CleanGIFPicker.plugin.js) file.
-3. Move the downloaded file into your BetterDiscord plugins folder:
+2. Open the plugin source code:
+   👉 **[Click here to open CleanGIFPicker.plugin.js](https://raw.githubusercontent.com/Illytx/CleanGIFPicker/master/CleanGIFPicker.plugin.js)**
+3. Press **`Ctrl + S`** (or right-click anywhere on the page and select **"Save As..."**).
+4. Save the file directly into your BetterDiscord plugins folder:
    - **Windows**: `%appdata%\BetterDiscord\plugins`
    - **macOS**: `~/Library/Application Support/BetterDiscord/plugins`
    - **Linux**: `~/.config/BetterDiscord/plugins`
-4. Open Discord, head to **User Settings** $\rightarrow$ **Plugins**, and toggle **CleanGIFPicker** on.
+5. Ensure the file name ends with `.plugin.js` (not `.txt` or `.html`).
+6. In Discord, go to **User Settings** $\rightarrow$ **Plugins** and turn on **CleanGIFPicker**.
 
 ---
 
