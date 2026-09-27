@@ -2,14 +2,14 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 
 ---
 
-## 📽️ Preview
+## Preview
 
 <img width="728" height="362" alt="gifff" src="https://github.com/user-attachments/assets/8a324294-287f-4f60-ba35-3a5e7122a7da" />
 
 
 ---
 
-## ✨ Features
+## Features
 - **Favorites-Only Mode**: Strips away trending internet categories, search suggestions, and clutter—keeping your picker focused strictly on your saved GIFs.
 - **Auto-Jump to Favorites**: Automatically opens directly into your saved Favorites tab whenever the GIF picker is invoked.
 - **Embed Diagnostics**: Right-click any individual GIF inside your favorites to run live checks:
@@ -21,11 +21,11 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 
 ---
 
-## 🚀 Installation
+## Installation
 
 1. Make sure you have [BetterDiscord](https://betterdiscord.app/) installed.
 2. Download the latest plugin file:
-   👉 **[Download CleanGIFPicker.plugin.js](https://github.com/Illytx/CleanGIFPicker/releases/latest/download/CleanGIFPicker.plugin.js)**
+   **[Download CleanGIFPicker.plugin.js](https://github.com/Illytx/CleanGIFPicker/releases/latest/download/CleanGIFPicker.plugin.js)**
 3. Move the downloaded `.plugin.js` file into your BetterDiscord plugins folder:
    - **Windows**: `%appdata%\BetterDiscord\plugins`
    - **macOS**: `~/Library/Application Support/BetterDiscord/plugins`
@@ -34,7 +34,7 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 
 ---
 
-## 🛠️ Usage
+## Usage
 
 - **Toggle Favorites Mode**: Right-click the **GIF** button next to the chat message box to open the settings toggle.
 - **Test a GIF Embed**: Right-click any thumbnail inside your Favorites grid and select **"🔍 Check for Issues / Test Embed"**.
@@ -42,6 +42,6 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 
 ---
 
-## 📝 License
+## License
 
 Distributed under the [MIT License](LICENSE).
