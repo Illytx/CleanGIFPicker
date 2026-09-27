@@ -1,6 +1,3 @@
-[CleanGIFPicker.plugin.js](https://github.com/user-attachments/files/32698376/CleanGIFPicker.plugin.js)
-# CleanGIFPicker
-
 A lightweight BetterDiscord plugin that streamlines your Discord GIF experience by decluttering internet suggestions, automatically focusing on your Favorites, and providing live diagnostics to catch broken embeds.
 
 ---
