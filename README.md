@@ -10,13 +10,13 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 ---
 
 ## Features
-- **Favorites Only Mode**: Strips away trending internet categories, search suggestions, and clutter—keeping your picker focused strictly on your saved GIFs.
+- **Favorites Only Mode**: Strips away trending internet categories, search suggestions, and clutter keeping your picker focused strictly on your saved GIFs.
 - **Auto Jump to Favorites**: Automatically opens directly into your saved Favorites tab whenever the GIF picker is invoked.
 - **Embed Diagnostics**: Right click any individual GIF inside your favorites to run live checks:
   - Detects expired Discord CDN tokens (`?ex=` parameters).
   - Flags dead/404 image sources before you send them.
   - Automatically tags dead embeds with a dashed red border and a warning badge.
-- **Right Click Chat Bar Quick Toggle**: Right click the GIF button directly on your chat bar to toggle between Favorites-Only mode and standard browsing on the fly.
+- **Right Click Chat Bar Quick Toggle**: Right click the GIF button directly on your chat bar to toggle between Favorites Only mode and standard browsing on the fly.
 - **Quick Copy**: Right click any GIF to copy its clean direct media link to your clipboard.
 
 ---
