@@ -10,14 +10,14 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 ---
 
 ## Features
-- **Favorites-Only Mode**: Strips away trending internet categories, search suggestions, and clutter—keeping your picker focused strictly on your saved GIFs.
-- **Auto-Jump to Favorites**: Automatically opens directly into your saved Favorites tab whenever the GIF picker is invoked.
-- **Embed Diagnostics**: Right-click any individual GIF inside your favorites to run live checks:
+- **Favorites Only Mode**: Strips away trending internet categories, search suggestions, and clutter—keeping your picker focused strictly on your saved GIFs.
+- **Auto Jump to Favorites**: Automatically opens directly into your saved Favorites tab whenever the GIF picker is invoked.
+- **Embed Diagnostics**: Right click any individual GIF inside your favorites to run live checks:
   - Detects expired Discord CDN tokens (`?ex=` parameters).
   - Flags dead/404 image sources before you send them.
   - Automatically tags dead embeds with a dashed red border and a warning badge.
-- **Right-Click Chat Bar Quick Toggle**: Right-click the GIF button directly on your chat bar to toggle between Favorites-Only mode and standard browsing on the fly.
-- **Quick Copy**: Right-click any GIF to copy its clean direct media link to your clipboard.
+- **Right Click Chat Bar Quick Toggle**: Right click the GIF button directly on your chat bar to toggle between Favorites-Only mode and standard browsing on the fly.
+- **Quick Copy**: Right click any GIF to copy its clean direct media link to your clipboard.
 
 ---
 
@@ -36,9 +36,9 @@ A lightweight BetterDiscord plugin that streamlines your Discord GIF experience 
 
 ## Usage
 
-- **Toggle Favorites Mode**: Right-click the **GIF** button next to the chat message box to open the settings toggle.
-- **Test a GIF Embed**: Right-click any thumbnail inside your Favorites grid and select **"🔍 Check for Issues / Test Embed"**.
-- **Copy Direct URL**: Right-click any GIF thumbnail and select **"📋 Copy Media Link"**.
+- **Toggle Favorites Mode**: Right click the **GIF** button next to the chat message box to open the settings toggle.
+- **Test a GIF Embed**: Right click any thumbnail inside your Favorites grid and select **"🔍 Check for Issues / Test Embed"**.
+- **Copy Direct URL**: Right click any GIF thumbnail and select **"📋 Copy Media Link"**.
 
 ---
 
