@@ -1,7 +1,7 @@
 /**
  * @name CleanGIFPicker
  * @author datae
- * @description Right-click the chat bar GIF button to toggle favorites-only view, Shift + Left Click to select multiple GIFs, and right-click to mass remove.
+ * @description Right click the chat bar GIF button to toggle favorites only view, Shift + Left Click to select multiple GIFs, and right click to mass remove.
  * @version 1.9.17
  * @source https://github.com/Illytx/CleanGIFPicker
  */
