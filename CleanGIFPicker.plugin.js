@@ -1,7 +1,7 @@
 /**
  * @name CleanGIFPicker
  * @author datae
- * @description Right click the chat bar GIF button to toggle favorites only view, Shift + Left Click to select multiple GIFs, and right click to mass remove.
+ * @description Right-click the chat bar GIF button to toggle favorites-only view, Shift + Left Click to select multiple GIFs, and right-click to mass remove.
  * @version 1.9.17
  * @source https://github.com/Illytx/CleanGIFPicker
  */
@@ -38,8 +38,10 @@ module.exports = class CleanGIFPicker {
         document.querySelectorAll(".clean-gif-selected").forEach(function(el) {
             el.classList.remove("clean-gif-selected");
         });
-        const container = document.getElementById("clean-gif-header-actions");
-        if (container) container.remove();
+        const note = document.getElementById("clean-gif-warning-note");
+        if (note) note.remove();
+        const shortcuts = document.getElementById("clean-gif-shortcuts-btn");
+        if (shortcuts) shortcuts.remove();
     }
 
     applyStyles() {
@@ -163,7 +165,7 @@ module.exports = class CleanGIFPicker {
         try {
             const res = await BdApi.Net.fetch(url, { method: "HEAD" });
             if (res.status >= 200 && res.status < 400) {
-                BdApi.UI.showToast("Embed Verified: Active and embeddable (" + res.status + ")", { type: "success", timeout: 3500 });
+                BdApi.UI.showToast("Embed Verified: Active & Embeddable (" + res.status + ")", { type: "success", timeout: 3500 });
             } else {
                 BdApi.UI.showToast("Embed Failed: HTTP " + res.status, { type: "error", timeout: 5000 });
             }
@@ -198,7 +200,7 @@ module.exports = class CleanGIFPicker {
                             selectedCards.forEach(function(card) {
                                 _this.removeFavorite(card);
                             });
-                            BdApi.UI.showToast("Removed " + selectedCards.length + " GIFs from favorites.", { type: "success" });
+                            BdApi.UI.showToast("Removed " + selectedCards.length + " GIFs from favorites!", { type: "success" });
                         }
                     });
                 }
@@ -210,7 +212,7 @@ module.exports = class CleanGIFPicker {
                         label: "Remove from Favorites",
                         action: function() {
                             _this.removeFavorite(gifCard);
-                            BdApi.UI.showToast("Removed from favorites.", { type: "success" });
+                            BdApi.UI.showToast("Removed from favorites!", { type: "success" });
                         }
                     },
                     {
@@ -228,9 +230,9 @@ module.exports = class CleanGIFPicker {
                         action: function() {
                             if (mediaUrl) {
                                 DiscordNative.clipboard.copy(mediaUrl);
-                                BdApi.UI.showToast("Link copied to clipboard.", { type: "info" });
+                                BdApi.UI.showToast("Link copied to clipboard!", { type: "info" });
                             } else {
-                                BdApi.UI.showToast("Media URL not ready yet. Wait a second.", { type: "warn" });
+                                BdApi.UI.showToast("Media URL not ready yet. Please wait a second.", { type: "warn" });
                             }
                         }
                     }
@@ -291,14 +293,16 @@ module.exports = class CleanGIFPicker {
                             {
                                 type: "toggle",
                                 id: "clean-gif-disclaimer-toggle",
-                                label: "Show Disclaimer Note and Shortcuts",
+                                label: "Show Disclaimer Note & Shortcuts",
                                 checked: _this.settings.showDisclaimer,
                                 action: function() {
                                     _this.settings.showDisclaimer = !_this.settings.showDisclaimer;
                                     _this.saveSettings();
-                                    const container = document.getElementById("clean-gif-header-actions");
-                                    if (container) {
-                                        container.style.display = _this.settings.showDisclaimer ? "flex" : "none";
+                                    if (!_this.settings.showDisclaimer) {
+                                        const note = document.getElementById("clean-gif-warning-note");
+                                        if (note) note.style.display = "none";
+                                        const shortcuts = document.getElementById("clean-gif-shortcuts-btn");
+                                        if (shortcuts) shortcuts.style.display = "none";
                                     }
                                 }
                             }
@@ -332,45 +336,14 @@ module.exports = class CleanGIFPicker {
                     picker.style.position = "relative";
                 }
 
-                if (!document.getElementById("clean-gif-header-actions")) {
-                    const container = document.createElement("div");
-                    container.id = "clean-gif-header-actions";
-                    container.style.position = "absolute";
-                    container.style.top = "12px";
-                    container.style.right = "16px";
-                    container.style.display = "flex";
-                    container.style.alignItems = "center";
-                    container.style.gap = "8px";
-                    container.style.zIndex = "100";
-
-                    const shortcutsEl = document.createElement("button");
-                    shortcutsEl.id = "clean-gif-shortcuts-btn";
-                    shortcutsEl.innerText = "Shortcuts";
-                    shortcutsEl.title = "View shortcuts";
-                    shortcutsEl.style.color = "#ffffff";
-                    shortcutsEl.style.backgroundColor = "#5865F2";
-                    shortcutsEl.style.fontFamily = "var(--font-primary), 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
-                    shortcutsEl.style.border = "none";
-                    shortcutsEl.style.borderRadius = "4px";
-                    shortcutsEl.style.padding = "4px 8px";
-                    shortcutsEl.style.fontSize = "12px";
-                    shortcutsEl.style.fontWeight = "600";
-                    shortcutsEl.style.cursor = "pointer";
-                    shortcutsEl.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
-                    
-                    shortcutsEl.onclick = function(e) {
-                        e.preventDefault();
-                        const modalContent = BdApi.React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, [
-                            BdApi.React.createElement("span", null, "Shift + Left Click: Select or deselect multiple GIFs."),
-                            BdApi.React.createElement("span", null, "Right Click any selected GIF: Mass remove all highlighted selections at once.")
-                        ]);
-                        BdApi.UI.alert("CleanGIFPicker Shortcuts", modalContent);
-                    };
-
+                if (!document.getElementById("clean-gif-warning-note")) {
                     const noteEl = document.createElement("button");
                     noteEl.id = "clean-gif-warning-note";
-                    noteEl.innerText = "Note";
+                    noteEl.innerText = "ⓘ Note";
                     noteEl.title = "Click to read";
+                    noteEl.style.position = "absolute";
+                    noteEl.style.top = "12px";
+                    noteEl.style.right = "16px";
                     noteEl.style.color = "#ffffff";
                     noteEl.style.backgroundColor = "#5865F2";
                     noteEl.style.fontFamily = "var(--font-primary), 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
@@ -380,25 +353,59 @@ module.exports = class CleanGIFPicker {
                     noteEl.style.fontSize = "12px";
                     noteEl.style.fontWeight = "600";
                     noteEl.style.cursor = "pointer";
+                    noteEl.style.zIndex = "100";
                     noteEl.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
                     
                     noteEl.onclick = function(e) {
                         e.preventDefault();
                         BdApi.UI.alert(
                             "Note on Broken GIFs", 
-                            "Some GIFs may work when sent, but can appear broken in the picker due to slow host loading or connection latency."
+                            "Some GIFs might work fine when sent, but might get temporarily labelled as broken in the picker due to your internet connection or slow loading times from the host."
                         );
                     };
+                    picker.appendChild(noteEl);
+                }
 
-                    container.appendChild(shortcutsEl);
-                    container.appendChild(noteEl);
-                    picker.appendChild(container);
+                if (!document.getElementById("clean-gif-shortcuts-btn")) {
+                    const shortcutsEl = document.createElement("button");
+                    shortcutsEl.id = "clean-gif-shortcuts-btn";
+                    shortcutsEl.innerText = "Shortcuts";
+                    shortcutsEl.title = "View shortcuts";
+                    shortcutsEl.style.position = "absolute";
+                    shortcutsEl.style.top = "12px";
+                    shortcutsEl.style.right = "74px";
+                    shortcutsEl.style.color = "#ffffff";
+                    shortcutsEl.style.backgroundColor = "#5865F2";
+                    shortcutsEl.style.fontFamily = "var(--font-primary), 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+                    shortcutsEl.style.border = "none";
+                    shortcutsEl.style.borderRadius = "4px";
+                    shortcutsEl.style.padding = "4px 8px";
+                    shortcutsEl.style.fontSize = "12px";
+                    shortcutsEl.style.fontWeight = "600";
+                    shortcutsEl.style.cursor = "pointer";
+                    shortcutsEl.style.zIndex = "100";
+                    shortcutsEl.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+                    
+                    shortcutsEl.onclick = function(e) {
+                        e.preventDefault();
+                        const modalContent = BdApi.React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, [
+                            BdApi.React.createElement("span", null, "• Shift + Left Click: Select or deselect multiple GIFs."),
+                            BdApi.React.createElement("span", null, "• Right Click any selected GIF: Mass remove all highlighted selections at once.")
+                        ]);
+                        BdApi.UI.alert("CleanGIFPicker Shortcuts", modalContent);
+                    };
+                    picker.appendChild(shortcutsEl);
                 }
             }
 
-            const headerActions = document.getElementById("clean-gif-header-actions");
-            if (headerActions) {
-                headerActions.style.display = _this.settings.showDisclaimer ? "flex" : "none";
+            const noteNode = document.getElementById("clean-gif-warning-note");
+            const shortcutsNode = document.getElementById("clean-gif-shortcuts-btn");
+            
+            if (noteNode) {
+                noteNode.style.display = _this.settings.showDisclaimer ? "block" : "none";
+            }
+            if (shortcutsNode) {
+                shortcutsNode.style.display = _this.settings.showDisclaimer ? "block" : "none";
             }
 
             if (_this.settings.favoritesOnly) {
