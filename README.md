@@ -1,5 +1,3 @@
 makes the gif picker less retarded. requires betterdiscord
 
-
-<img width="344" height="328" alt="preview2" src="https://github.com/user-attachments/assets/ebbc9bdb-af93-4ee8-894d-9c3135762d00" />
-
+<img width="314" height="354" alt="ergg" src="https://github.com/user-attachments/assets/c4087f30-ae10-42f6-afad-90a2ab33336c" />
