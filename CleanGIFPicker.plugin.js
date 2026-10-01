@@ -184,7 +184,6 @@ ${CARD}[role='button']:has([class*='categoryFade']):not([aria-label*='Favorites'
 ${CARD}[role='button']:has([class*='categoryText']):not([aria-label*='Favorites' i]) { display: none !important; }
 ${GIF_CARD} { display: block !important; }`;
 
-        // last and more specific than the rule above so removed cards stay hidden
         css += `\nhtml ${CARD}[data-cleaned-removed] { display: none !important; }`;
 
         BdApi.DOM.addStyle(`${ID}-CSS`, css);
