@@ -7,8 +7,14 @@
  */
 
 const ID = "CleanGIFPicker";
-const CARD = "[class*='result__2dc39']";
-const GIF_CARD = `${CARD}:not(:has([class*='categoryFade']))`;
+let CARD = "[class*='result_']";
+let GIF_CARD = `${CARD}:not(:has([class*='categoryFade']))`;
+
+function resolveSelectors() {
+    const cls = BdApi.Webpack.getByKeys("result", "categoryFade")?.result;
+    if (cls) CARD = "." + cls.split(" ")[0];
+    GIF_CARD = `${CARD}:not(:has([class*='categoryFade']))`;
+}
 const DEFAULTS = { favoritesOnly: true, showDisclaimer: true };
 const NOTE = "Some gifs might work fine when sent, but might get temporarily labelled as broken in the picker due to your shitty internet connection or slow loading times from the host.";
 
@@ -100,6 +106,7 @@ function isGifButton(target) {
 
 module.exports = class CleanGIFPicker {
     start() {
+        resolveSelectors();
         this.settings = { ...DEFAULTS, ...BdApi.Data.load(ID, "settings") };
         this.applyStyles();
 
